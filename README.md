@@ -25,7 +25,7 @@ A Spring Boot REST API service for managing bookings, workers/cleaning professio
 ### 1. Install PostgreSQL
 Make sure PostgreSQL is installed and running on your system or you can run the shell script below on docker:
 
-```sh
+```bash
 docker run --name my-postgres -e POSTGRES_USER=root -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=bookingdb -p 5432:5432 -d postgres:15
 ```
 
@@ -126,18 +126,18 @@ INSERT INTO worker (name, available, working_hours, working_on_fridays, vehicle_
 
 INSERT INTO booking (start_time, end_time, duration, required_workers) VALUES 
 
-('2024-01-15 09:00:00', '2024-01-15 12:00:00', 180, 2),
+('2024-01-15 09:00:00', '2024-01-15 12:00:00', 4, 2),
 
-('2024-01-15 14:00:00', '2024-01-15 17:00:00', 180, 1),
+('2024-01-15 14:00:00', '2024-01-15 17:00:00', 2, 1),
 
-('2024-01-16 10:00:00', '2024-01-16 15:00:00', 300, 3),
+('2024-01-16 10:00:00', '2024-01-16 15:00:00', 2, 3),
 
-('2024-01-17 08:00:00', '2024-01-17 11:00:00', 180, 1);
+('2024-01-17 08:00:00', '2024-01-17 11:00:00', 4, 1);
 
 
 -- Insert booking details (linking bookings with workers)
 
-INSERT INTO booking_detail (booking_id, professional_id) VALUES 
+INSERT INTO booking_detail (booking_id, worker_id) VALUES 
 
 (1, 1), (1, 3),  -- Booking 1 has workers 1 and 3
 
@@ -159,7 +159,7 @@ Please refer to [application.properties](src/main/resources/application.properti
 
 ### 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/huxaifaw/Booking-Service.git
 cd booking-service
 ```
 
